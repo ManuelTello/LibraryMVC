@@ -1,0 +1,22 @@
+{
+    "apps":
+    [
+        {
+            "name" : "library",
+            "script" : "./dist/server.js",
+            "exec_mode" : "cluster",
+            "watch" : false,
+            "env_production" :
+            {
+                "instances" : "-1",
+                "NODE_ENV" : "production"
+            },
+            "env_development" : 
+            {
+                "instances" : "1",
+                "NODE_ENV" : "development",
+                "PORT" : 8080
+            }
+        }
+    ]
+}
