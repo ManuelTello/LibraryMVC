@@ -25,6 +25,8 @@ class ExpressApp
         this._App.use(express.urlencoded({extended:true}));
         this._App.use(express.static(join(cwd(),"public")));
         this._App.use("/CSS",express.static(join(cwd(),"node_modules","bootstrap","dist","css")));
+        this._App.set("view engine","ejs");
+        this._App.set("views",join(cwd(),"src","Views"));
     }
 
     private InitControllers(controllers:IController[]):void
