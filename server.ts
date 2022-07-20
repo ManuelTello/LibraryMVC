@@ -1,6 +1,7 @@
 import express from "express";
 import IController from "./src/Interfaces/IController";
 import BookController from "./src/Controllers/BookController";
+import { join } from "path";
 
 class ExpressApp 
 {
@@ -18,8 +19,12 @@ class ExpressApp
 
     private InitMiddlewares():void
     {
+        const { cwd } = process;
+
         this._App.use(express.json());
         this._App.use(express.urlencoded({extended:true}));
+        this._App.use(express.static(join(cwd(),"public")));
+        this._App.use("/CSS",express.static(join(cwd(),"node_modules","bootstrap","dist","css")));
     }
 
     private InitControllers(controllers:IController[]):void
