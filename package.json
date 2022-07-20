@@ -5,8 +5,9 @@
   "main": "./dist/server.js",
   "scripts": {
     "start": "concurrently -m 1 \"npm:build\" \"pm2-runtime ./ecosystem.config.json --env production\"",
-    "test": "concurrently -m 1 \"npm:build\" \"nodemon ./dist/server.js\"",
-    "build": "tsc"
+    "test": "concurrently -m 1 \"npm:build\" \"pm2-runtime ./ecosystem.config.json --env development\"",
+    "build": "tsc",
+    "test:ts" : "ts-node server"
   },
   "repository": {
     "type": "git",
