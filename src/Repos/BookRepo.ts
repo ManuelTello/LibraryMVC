@@ -2,7 +2,7 @@ import Book from "../Models/Book";
 
 export class BookRepo
 {
-    protected _Books:Book[];
+    private _Books:Book[];
     
     public constructor()
     {
@@ -15,9 +15,19 @@ export class BookRepo
         ];
     }
 
-    public GetBooks():Book[]
+    public GetBooks(id?:string):Book[]
     {
-        return this._Books;
+        if(id)
+        {
+            const query:Book = this._Books.find(b => b._Id == id);
+            const books:Book[] = [];
+            books.push(query);
+            return books;
+        }
+        else
+        {
+            return this._Books;
+        }
     }  
     
     public AddBook(book:Book):void

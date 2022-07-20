@@ -15,13 +15,17 @@ class BookController implements IController
 
     InitRoutes():void
     {
-        this._Router.get(`${this._URLPath}/index`,this.Index);
+        this._Router.get(`${this._URLPath}/index`,this.Index)
+                    .get(`${this._URLPath}/index/:id`,this.Index);
         this._Router.post(`${this._URLPath}/add`,this.Add);
     }
 
     private Index(req:Request,res:Response):void
     {
-        const books:Book[] = new BookRepo().GetBooks();
+        const id:string = req.params.id;
+        const repo:BookRepo = new BookRepo();
+        const books:Book[] = id ?  repo.GetBooks(id) : repo.GetBooks();
+
         res.status(200).json(books);
     }
     
@@ -39,7 +43,7 @@ class BookController implements IController
 
     private AddView(req:Request, res:Response):void
     {
-        
+
     }
 }
 
