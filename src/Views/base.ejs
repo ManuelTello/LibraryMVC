@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include("Shared/_Head",{Title}) %>
+</head>
+<body>
+    <%- include("Shared/_NavBar") %>
+    <%if(Payload){%>
+        <%- include(`${Controller}/${Action}`,{Payload}) %>
+    <%}else{%>
+        <%- include(`${Controller}/${Action}`) %>
+    <%}%>
+</body>
+</html>
