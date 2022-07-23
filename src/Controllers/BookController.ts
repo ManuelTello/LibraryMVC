@@ -27,7 +27,6 @@ class BookController implements IController
         const id:string = req.params.id;
         const repo:BookRepo = new BookRepo();
         const payload:Book[] = id ?  repo.GetBooks(id) : repo.GetBooks();
-        
         const view:IView = 
         {
             Base:"base",
