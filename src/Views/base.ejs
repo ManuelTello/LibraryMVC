@@ -6,7 +6,7 @@
     <body>
         <%- include("Shared/_NavBar") %>
         <main class="container-sm">
-            <%if(Payload){%>
+            <%if(Payload.length > 0){%>
                 <%- include(`${Controller}/${Action}`,{Payload}) %>
             <%}else{%>
                 <%- include(`${Controller}/${Action}`) %>

@@ -54,7 +54,7 @@ class BookController implements IController
         const view:IView =
         {
             Base:"base",
-            Data:{Controller:"Books",Action:"Add",Title:"Add Book"}
+            Data:{Controller:"Books",Action:"Add",Title:"Add Book",Payload:[]}
         };
 
         res.status(200).render(view.Base,view.Data);
