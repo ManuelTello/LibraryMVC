@@ -4,8 +4,8 @@
   "description": "",
   "main": "./dist/server.js",
   "scripts": {
-    "start": "concurrently -m 1 \"npm:build\" \"pm2-runtime ./ecosystem.config.json --env production\"",
-    "test": "concurrently -m 1 \"npm:build\" \"pm2-runtime ./ecosystem.config.json --env development\"",
+    "start": "concurrently -m 1 -n \"build,starting\" \"npm:build\" \"pm2-runtime ./ecosystem.config.json --env production\"",
+    "test": "concurrently -m 1 -n \"build,starting\" \"npm:build\" \"pm2-runtime ./ecosystem.config.json --env development\"",
     "build": "tsc",
     "test:ts": "ts-node server"
   },

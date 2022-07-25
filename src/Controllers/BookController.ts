@@ -24,7 +24,7 @@ class BookController implements IController
 
     private Index(req:Request,res:Response):void
     {
-        const id:string = req.params.id;
+        const id:number = parseInt(req.params.id);
         const repo:BookRepo = new BookRepo();
         const payload:Book[] = id ?  repo.GetBooks(id) : repo.GetBooks();
         const view:IView = 
@@ -38,15 +38,21 @@ class BookController implements IController
     
     private Add(req:Request,res:Response):void
     {
-        console.log("Added");
-        /*const id:string = req.body.id;
+        const id:number = req.body.id;
         const title:string = req.body.title;
         const author:string = req.body.author;
         const published:Date = req.body.published;
-
+        
         const book:Book = new Book(id,title,author,published);
-        new BookRepo().AddBook(book);
-        res.status(200).redirect(`${this._URLPath}/index`);*/
+        try
+        {
+            new BookRepo().AddBook(book);
+        }
+        catch(err)
+        {
+            console.log(err);
+        }
+        res.status(200).redirect(`index`);
     }
 
     private AddView(req:Request, res:Response):void

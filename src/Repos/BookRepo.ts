@@ -1,3 +1,4 @@
+import { stringify } from "querystring";
 import Book from "../Models/Book";
 
 export class BookRepo
@@ -8,14 +9,14 @@ export class BookRepo
     {
         this._Books = 
         [
-            new Book("1","Title 1","Author 1",new Date),
-            new Book("2","Title 2","Author 2",new Date),
-            new Book("3","Title 3","Author 3",new Date),
-            new Book("4","Title 4","Author 4",new Date)
+            new Book(1,"Title 1","Author 1",new Date),
+            new Book(2,"Title 2","Author 2",new Date),
+            new Book(3,"Title 3","Author 3",new Date),
+            new Book(4,"Title 4","Author 4",new Date)
         ];
     }
 
-    public GetBooks(id?:string):Book[]
+    public GetBooks(id?:number):Book[]
     {
         if(id)
         {
@@ -32,6 +33,7 @@ export class BookRepo
     
     public AddBook(book:Book):void
     {
-        this._Books = [...this._Books,book];
+        book._Id = this._Books.length + 1;
+        this._Books.push(book);
     }
 };
